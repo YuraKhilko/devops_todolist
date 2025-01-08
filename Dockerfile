@@ -12,10 +12,10 @@ WORKDIR /app
 
 ENV PYTHONUNBUFFERED=1
 
-copy --from=base /app .
+COPY --from=base /app .
 
-run pip install -r requirements.txt 
+RUN pip install -r requirements.txt 
 
 RUN python manage.py migrate
 
-entrypoint ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+ENTRYPOINT ["python", "manage.py", "runserver", "0.0.0.0:8000"]
